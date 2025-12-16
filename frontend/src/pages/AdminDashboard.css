@@ -1,0 +1,592 @@
+/* Import Bootstrap Icons */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+/* 1. Scope Variables locally (optional, but safer) */
+.admin-scope {
+  --g-darkest: #051f20;
+  --g-2: #0b2b26;
+  --g-3: #163832;
+  --g-4: #235347;
+  --g-accent: #8eb69b;
+  --g-pale: #daf1de;
+  --g-white: #fff;
+  --card-shadow: 0 8px 24px rgba(5, 31, 32, 0.14);
+  --card-radius: 18px;
+  --text-on-light: #07221f;
+  --muted: rgba(7, 34, 31, 0.56);
+}
+
+/* 2. REMOVED GLOBAL BODY TAG. 
+   Moved background and font settings to the wrapper class. */
+.admin-scope {
+  font-family: "Inter", "Segoe UI", "Roboto", Arial, sans-serif;
+  background: var(--g-darkest);
+  min-height: 100vh;
+  /* Moved gradient here */
+  background: linear-gradient(-180deg, var(--g-4), var(--g-darkest));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 0 0 0;
+  /* Reset margin/padding behavior that body usually handles */
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 3. Prefix all other classes with .admin-scope */
+
+.admin-scope .dashboard-title {
+  color: var(--g-pale);
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.admin-scope .dashboard-subtitle {
+  color: rgba(218, 241, 222, 0.84);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.admin-scope .container {
+  width: 100%;
+  max-width: 1240px;
+  padding: 0 1rem 2rem;
+  margin: 0 auto;
+}
+
+.admin-scope .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+  margin: 0 auto 2rem auto;
+  width: 100%;
+}
+
+.admin-scope .stat-card {
+  background: var(--g-white);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  border: none;
+  padding: 2rem 1.2rem 1.4rem 1.2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  transition: box-shadow 0.19s, transform 0.19s;
+  min-width: 0;
+  min-height: 100px;
+  cursor: pointer;
+}
+
+.admin-scope .stat-card:hover,
+.admin-scope .stat-card:focus-visible {
+  box-shadow: 0 14px 34px rgba(22, 56, 50, 0.1), var(--card-shadow);
+  transform: translateY(-2px) scale(1.015);
+}
+
+.admin-scope .stat-card i {
+  font-size: 2.4rem;
+  width: 62px;
+  height: 62px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--g-3) 38%, var(--g-4) 100%);
+  color: var(--g-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(22, 56, 50, 0.09);
+}
+
+.admin-scope .stat-card h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--g-darkest);
+  margin: 0 0 0.22rem 0;
+}
+
+.admin-scope .stat-card p {
+  font-size: 0.97rem;
+  color: var(--muted);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* --- Activity/Actions Layout --- */
+.admin-scope .activity-actions-container {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  justify-content: stretch;
+  align-items: flex-start;
+  margin-bottom: 2.3rem;
+  flex-wrap: wrap;
+}
+
+.admin-scope .activity-section,
+.admin-scope .quick-actions {
+  background: var(--g-white);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  border: none;
+  padding: 2rem 1.25rem 1.4rem;
+  flex: 1 1 340px;
+  min-width: 260px;
+  margin: 0;
+  max-width: 690px;
+}
+
+.admin-scope .activity-section h3,
+.admin-scope .quick-actions h3 {
+  color: var(--text-on-light);
+  font-weight: 700;
+  font-size: 1.24rem;
+  margin-bottom: 1.15rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 2px solid var(--g-4);
+  letter-spacing: 0.01em;
+}
+
+.admin-scope .activity-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.admin-scope .activity-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(5, 31, 32, 0.04);
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(6, 34, 31, 0.07);
+  transition: transform 0.14s, box-shadow 0.14s;
+  min-width: 0;
+}
+
+.admin-scope .activity-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(22, 56, 50, 0.07);
+}
+
+.admin-scope .activity-left {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.admin-scope .activity-left i {
+  font-size: 1.16rem;
+  color: var(--g-4);
+  margin-right: 0.4rem;
+}
+
+.admin-scope .activity-left h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-on-light);
+  margin: 0;
+  letter-spacing: 0.015em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 18em;
+}
+
+.admin-scope .activity-left p {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0;
+  font-weight: 500;
+}
+
+.admin-scope .activity-status {
+  padding: 6px 18px;
+  border-radius: 15px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  background: #fafafc;
+  transition: background 0.16s, color 0.16s;
+}
+
+/* Specific status colors */
+.admin-scope .status-resolved {
+  background: rgba(40, 167, 69, 0.12);
+  color: #28a745;
+}
+.admin-scope .status-reported {
+  background: rgba(255, 193, 7, 0.14);
+  color: #ffc107;
+}
+.admin-scope .status-in-progress {
+  background: rgba(33, 150, 243, 0.13);
+  color: #2196f3;
+}
+
+.admin-scope .no-activity {
+  text-align: center;
+  padding: 1.1rem 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* --- Quick Actions --- */
+.admin-scope .quick-actions .btns {
+  padding: 14px 0;
+  border-radius: 11px;
+  text-align: center;
+  font-weight: 600;
+  transition: all 0.18s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  text-decoration: none;
+  font-size: 1.07rem;
+  outline: none;
+  border: none;
+  margin-bottom: 0.3rem;
+  box-shadow: 0 1px 8px rgba(22, 56, 50, 0.07);
+  cursor: pointer;
+}
+
+.admin-scope .quick-actions .btns.primary {
+  background: linear-gradient(90deg, var(--g-3), var(--g-4));
+  color: var(--g-pale);
+  box-shadow: 0 8px 24px rgba(22, 56, 50, 0.19);
+}
+
+.admin-scope .quick-actions .btns.primary:hover,
+.admin-scope .quick-actions .btns.primary:focus-visible {
+  background: linear-gradient(90deg, var(--g-4), var(--g-2));
+  box-shadow: 0 14px 32px rgba(22, 56, 50, 0.23);
+  color: var(--g-pale);
+  transform: translateY(-2px) scale(1.018);
+}
+
+.admin-scope .quick-actions .btns.secondary {
+  background: transparent;
+  border: 2px solid var(--g-3);
+  color: var(--g-3);
+}
+
+.admin-scope .quick-actions .btns.secondary:hover,
+.admin-scope .quick-actions .btns.secondary:focus-visible {
+  background: var(--g-3);
+  color: var(--g-pale);
+  transform: translateY(-1px) scale(1.01);
+}
+
+/* --- Modal (Map) Styling --- */
+/* The overlay is usually outside the root, but if it is inside .dashboard-page, this works.
+   If using React Portal, you might need a separate class, but let's assume standard nesting. */
+.admin-scope .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(5, 31, 32, 0.86);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3330;
+  backdrop-filter: blur(6px);
+}
+
+.admin-scope .modal-box.map-modal {
+  background: var(--g-white);
+  padding: 2rem 1.3rem 1.1rem;
+  border-radius: 18px;
+  box-shadow: 0 14px 80px rgba(4, 24, 44, 0.22);
+  width: 95vw;
+  max-width: 800px;
+  max-height: 92vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  position: relative;
+}
+
+.admin-scope .map-modal h2 {
+  color: var(--g-darkest);
+  font-size: 1.45rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--g-3);
+}
+
+.admin-scope .map-container {
+  width: 100%;
+  flex: 1;
+  min-height: 340px;
+  border-radius: 12px;
+  border: 1px solid var(--g-3);
+  margin-bottom: 0.7rem;
+}
+
+.admin-scope .close-btn {
+  background: #dc3545;
+  color: var(--g-white);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 9px 22px;
+  border-radius: 11px;
+  border: none;
+  align-self: flex-end;
+  margin-right: 0;
+  margin-top: 0;
+  cursor: pointer;
+  transition: background 0.17s, box-shadow 0.17s, transform 0.15s;
+  box-shadow: 0 1px 8px rgba(220, 53, 69, 0.09);
+}
+
+.admin-scope .close-btn:hover,
+.admin-scope .close-btn:focus-visible {
+  background: #c82333;
+  box-shadow: 0 4px 14px rgba(220, 53, 69, 0.28);
+  transform: translateY(-1px) scale(1.01);
+}
+
+/* --- Responsive Design --- */
+
+/* Large desktop/tablet (≤ 1200px) */
+@media (max-width: 1200px) {
+  .admin-scope .container {
+    max-width: 980px;
+  }
+  .admin-scope .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .admin-scope .activity-section,
+  .admin-scope .quick-actions {
+    padding: 1.4rem 1rem 1rem;
+  }
+}
+
+/* Tablet and smaller desktop (≤ 992px) */
+@media (max-width: 992px) {
+  .admin-scope .container {
+    max-width: 700px;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+  }
+  .admin-scope .dashboard-title {
+    font-size: 2rem;
+  }
+  .admin-scope .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+  .admin-scope .activity-actions-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .admin-scope .activity-section,
+  .admin-scope .quick-actions {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-bottom: 0.7rem;
+    padding: 1.15rem 0.8rem 0.8rem;
+  }
+  .admin-scope .map-modal {
+    max-width: 99vw;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+  }
+}
+
+/* Mobile and tablet portrait (≤ 768px) */
+@media (max-width: 768px) {
+  /* Note: .dashboard-page is now handled by .admin-scope properties in main block, 
+     but we keep specificity here */
+  .admin-scope {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 48px;
+  }
+  .admin-scope .dashboard-title {
+    font-size: 1.42rem;
+    margin-top: 1rem;
+    margin-bottom: 0.35rem;
+  }
+  .admin-scope .dashboard-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.1rem;
+  }
+  .admin-scope .container {
+    max-width: 98vw;
+    padding: 0 0.1rem 0.5rem;
+  }
+  .admin-scope .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+  .admin-scope .stat-card {
+    flex-direction: row;
+    align-items: center;
+    padding: 0.9rem;
+    gap: 0.65rem;
+    font-size: 0.92rem;
+  }
+  .admin-scope .stat-card i {
+    font-size: 1.32rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 9px;
+  }
+  .admin-scope .stat-card h2 {
+    font-size: 1.15rem;
+  }
+  /* Activity list */
+  .admin-scope .activity-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.77rem 0.8rem;
+    gap: 0.12rem;
+  }
+  .admin-scope .activity-left {
+    width: 100%;
+    margin-bottom: 0.42rem;
+    gap: 0.48rem;
+  }
+  .admin-scope .activity-status {
+    align-self: flex-end;
+    margin-top: -1.2rem;
+    padding: 5px 16px;
+    font-size: 0.88rem;
+  }
+  /* Quick action buttons full width on mobile */
+  .admin-scope .quick-actions .btns {
+    width: 100%;
+    font-size: 0.95rem;
+    margin-bottom: 0.17rem;
+    padding: 13px 0;
+  }
+  .admin-scope .map-container {
+    min-height: 220px;
+  }
+  .admin-scope .modal-box.map-modal {
+    padding: 0.8rem 0.5rem 0.8rem;
+    border-radius: 11px;
+    box-shadow: 0 2px 34px rgba(20, 40, 60, 0.09);
+  }
+  .admin-scope .map-modal h2 {
+    font-size: 1.08rem;
+    padding-bottom: 0.19rem;
+  }
+  .admin-scope .close-btn {
+    font-size: 0.95rem;
+    padding: 7px 16px;
+    border-radius: 8px;
+  }
+}
+
+/* Very small mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .admin-scope .dashboard-title {
+    font-size: 1.08rem;
+  }
+  .admin-scope .dashboard-subtitle {
+    font-size: 0.81rem;
+  }
+  .admin-scope .container {
+    padding: 0 0.02rem 0.22rem;
+  }
+  .admin-scope .stat-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+    padding: 0.7rem 0.2rem;
+  }
+  .admin-scope .stat-card i {
+    margin-bottom: 0.22rem;
+    width: 38px;
+    height: 38px;
+    font-size: 1.02rem;
+  }
+  .admin-scope .stat-card h2 {
+    font-size: 1.05rem;
+  }
+  .admin-scope .activity-section,
+  .admin-scope .quick-actions {
+    padding: 0.55rem 0.15rem;
+    border-radius: 7px;
+  }
+  .admin-scope .no-activity {
+    font-size: 0.86rem;
+    padding: 0.7rem 0;
+  }
+  .admin-scope .activity-left {
+    gap: 0.31rem;
+    margin-bottom: 0.19rem;
+  }
+  .admin-scope .map-modal h2 {
+    font-size: 0.97rem;
+  }
+  .admin-scope .close-btn {
+    font-size: 0.89rem;
+    padding: 6px 14px;
+  }
+  .admin-scope .modal-box.map-modal {
+    border-radius: 7px;
+    padding: 0.47rem 0.14rem 0.5rem;
+  }
+  .admin-scope .map-container {
+    min-height: 160px;
+    border-radius: 6px;
+  }
+}
+.admin-scope .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(5, 31, 32, 0.86);
+  z-index: 9999; /* Increased to beat any sidebar/header */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+}
+
+.admin-scope .modal-box.map-modal {
+  background: #fff;
+  padding: 2rem 1.3rem 1.1rem;
+  border-radius: 18px;
+  width: 95vw;
+  max-width: 800px;
+  /* CRITICAL: Explicit height control */
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-scope .map-container {
+  width: 100%;
+  /* CRITICAL: Flex 1 fills the remaining space, but min-height ensures visibility */
+  flex: 1;
+  min-height: 400px;
+  border-radius: 12px;
+  border: 1px solid #163832;
+  margin-bottom: 0.7rem;
+  /* Fix for OpenLayers canvas size issues */
+  display: block;
+  position: relative;
+}
